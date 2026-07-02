@@ -17,21 +17,20 @@ const HIGHLIGHT_SERVICES = [
   },
 ];
 
-// Différenciateurs — ce qui te distingue d'une agence classique ou d'un
-// template tout fait. Séparé de HIGHLIGHT_SERVICES car sémantiquement
-// différent : ici c'est "pourquoi moi", pas "ce que je fais"
+// Textes étoffés suite à la session de copywriting — ton décontracté/accessible,
+// on insiste sur rapidité + sur-mesure + prix (les 3 priorités données)
 const WHY_ME = [
   {
     title: "100% sur-mesure",
-    description: "Pas de template générique — chaque site est pensé et codé pour votre activité, pas pour rentrer dans un moule.",
+    description: "Pas de template recyclé à l'infini. Chaque site est pensé pour votre activité, votre image et vos clients — pas pour rentrer dans un moule générique.",
   },
   {
-    title: "Réactivité & proximité",
-    description: "Un seul interlocuteur du premier échange à la mise en ligne, avec des délais de réponse rapides.",
+    title: "Livraison rapide",
+    description: "Entre 5 jours et 3 semaines selon la complexité du projet. Vous savez à quoi vous attendre, sans les délais à rallonge des grosses structures.",
   },
   {
-    title: "Tarifs adaptés TPE/PME",
-    description: "Des prestations pensées pour votre budget, sans les coûts de structure d'une agence classique.",
+    title: "Tarifs pensés pour les TPE/PME",
+    description: "Un accompagnement sérieux, sans le coût d'une agence. Vous payez pour le travail, pas pour la structure.",
   },
 ];
 
@@ -44,8 +43,10 @@ export default function Home() {
           Votre projet web, de l&apos;idée au résultat.
         </h1>
         <p className="text-lg text-frost/80 mb-10 max-w-2xl mx-auto">
-          Développeur web freelance pour TPE & PME — sites vitrines,
-          applications sur-mesure et accompagnement technique.
+          Je m&apos;adapte à vos besoins et à votre budget. Développeur freelance
+          basé à Toulon, j&apos;accompagne les TPE et PME avec des sites rapides
+          à livrer, taillés sur-mesure, sans les tarifs ni la lourdeur d&apos;une
+          agence.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
           <Button href="/contact" variant="primary">
