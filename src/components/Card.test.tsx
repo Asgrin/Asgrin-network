@@ -11,19 +11,26 @@ describe("Card", () => {
 
     it("ne rend pas d'icône si aucune n'est fournie", () => {
         const { container } = render(<Card title="Test" description="Desc" />);
-        // aria-hidden est notre marqueur du wrapper icône : s'il est absent,
-        // le bloc icône entier n'a pas été rendu
         expect(container.querySelector('[aria-hidden="true"]')).not.toBeInTheDocument();
     });
 
     it("rend l'icône fournie", () => {
         render(
-            <Card
-                title="Test"
-                description="Desc"
-                icon={<span data-testid="fake-icon">🚀</span>}
-            />
+            <Card title="Test" description="Desc" icon={<span data-testid="fake-icon">🚀</span>} />
         );
         expect(screen.getByTestId("fake-icon")).toBeInTheDocument();
+    });
+
+    // Nouveaux tests pour le comportement cliquable
+    it("rend un <div> (non cliquable) sans href", () => {
+        render(<Card title="Test" description="Desc" />);
+        // Aucun rôle "link" ne doit exister dans ce cas
+        expect(screen.queryByRole("link")).not.toBeInTheDocument();
+    });
+
+    it("rend un <Link> cliquable quand href est fourni", () => {
+        render(<Card title="Services" description="Desc" href="/services" />);
+        const link = screen.getByRole("link");
+        expect(link).toHaveAttribute("href", "/services");
     });
 });

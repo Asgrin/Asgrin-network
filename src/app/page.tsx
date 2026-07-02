@@ -5,15 +5,15 @@ import Card from "@/components/Card";
 const HIGHLIGHT_SERVICES = [
   {
     title: "Sites vitrines",
-    description: "Un site rapide, moderne et qui vous ressemble, pensé pour convertir vos visiteurs en clients.",
+    description: "Un site rapide, moderne et responsive, pensé pour donner confiance à vos visiteurs et les transformer en clients. Livré prêt à l'emploi, sans jargon technique à gérer de votre côté.",
   },
   {
     title: "Applications web",
-    description: "Des outils sur-mesure pour digitaliser vos process internes ou vos services clients.",
+    description: "Des outils sur-mesure pour digitaliser vos process internes ou vos services clients — de la simple interface de gestion à des besoins plus poussés selon votre activité.",
   },
   {
-    title: "Maintenance & évolutions",
-    description: "Un accompagnement continu pour faire évoluer votre site au rythme de votre activité.",
+    title: "Campagnes Google Ads",
+    description: "Mise en place et suivi de campagnes publicitaires ciblées, pour amener du trafic qualifié vers votre site dès sa mise en ligne.",
   },
 ];
 
@@ -77,7 +77,12 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {HIGHLIGHT_SERVICES.map((service) => (
-            <Card key={service.title} title={service.title} description={service.description} />
+            <Card
+              key={service.title}
+              title={service.title}
+              description={service.description}
+              href="/services" // ← ajouté
+            />
           ))}
         </div>
       </Section>
