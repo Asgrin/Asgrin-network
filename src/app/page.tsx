@@ -1,24 +1,29 @@
 import Button from "@/components/Button";
 import Section from "@/components/Section";
 import Card from "@/components/Card";
+import { BrowserIcon, LayersIcon, TrendUpIcon } from "@/components/icons/Serviceicons";
 
 const HIGHLIGHT_SERVICES = [
   {
     title: "Sites vitrines",
     description: "Un site rapide, moderne et responsive, pensé pour donner confiance à vos visiteurs et les transformer en clients. Livré prêt à l'emploi, sans jargon technique à gérer de votre côté.",
+    icon: <BrowserIcon className="w-full h-full" />,
+    href: "/services#sites-vitrines",
   },
   {
     title: "Applications web",
     description: "Des outils sur-mesure pour digitaliser vos process internes ou vos services clients — de la simple interface de gestion à des besoins plus poussés selon votre activité.",
+    icon: <LayersIcon className="w-full h-full" />,
+    href: "/services#apps-web",
   },
   {
     title: "Campagnes Google Ads",
     description: "Mise en place et suivi de campagnes publicitaires ciblées, pour amener du trafic qualifié vers votre site dès sa mise en ligne.",
+    icon: <TrendUpIcon className="w-full h-full" />,
+    href: "/services#google-ads",
   },
 ];
 
-// Textes étoffés suite à la session de copywriting — ton décontracté/accessible,
-// on insiste sur rapidité + sur-mesure + prix (les 3 priorités données)
 const WHY_ME = [
   {
     title: "100% sur-mesure",
@@ -81,7 +86,8 @@ export default function Home() {
               key={service.title}
               title={service.title}
               description={service.description}
-              href="/services" // ← ajouté
+              icon={service.icon}
+              href={service.href}
             />
           ))}
         </div>
