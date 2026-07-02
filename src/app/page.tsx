@@ -41,8 +41,7 @@ export default function Home() {
       {/* HERO */}
       <Section className="text-center py-24">
         <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-          Votre projet web,{" "}
-          <span className="text-soft-iris">de l&apos;idée au résultat.</span>
+          Votre projet web, de l&apos;idée au résultat.
         </h1>
         <p className="text-lg text-frost/80 mb-10 max-w-2xl mx-auto">
           Développeur web freelance pour TPE & PME — sites vitrines,
