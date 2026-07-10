@@ -15,11 +15,7 @@
   --font-heading: var(--font-orbitron);
   --font-body: var(--font-dm-sans);
 
-  /* Animations custom pour les 3 blobs — durées différentes et
-     décalées pour éviter un mouvement trop synchronisé/mécanique */
-  --animate-aurora-1: aurora-drift-1 25s ease-in-out infinite;
-  --animate-aurora-2: aurora-drift-2 32s ease-in-out infinite;
-  --animate-aurora-3: aurora-drift-3 28s ease-in-out infinite;
+  --color-neon-violet: #6C5CE7;
 }
 
 body {
@@ -37,41 +33,7 @@ h6 {
   font-family: var(--font-heading);
 }
 
-@keyframes aurora-drift-1 {
 
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate(20%, 25%) scale(1.3);
-  }
-}
-
-@keyframes aurora-drift-2 {
-
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate(-40%, 30%) scale(1.4);
-  }
-}
-
-@keyframes aurora-drift-3 {
-
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate(18%, -22%) scale(1.35);
-  }
-}
 
 /* Accessibilité : on coupe l'animation pour les personnes qui ont
    activé "réduire les animations" dans leur OS — certaines personnes
@@ -81,6 +43,130 @@ h6 {
   .animate-aurora-1,
   .animate-aurora-2,
   .animate-aurora-3 {
+    animation: none;
+  }
+}
+
+
+/* === Aurore boréale — rideaux de lumière === */
+
+@keyframes aurora-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes aurora-sway-1 {
+
+  0%,
+  100% {
+    transform: translate(-10%, -8%) rotate(-12deg) scaleY(1);
+  }
+
+  50% {
+    transform: translate(6%, 10%) rotate(-7deg) scaleY(1.2);
+  }
+}
+
+@keyframes aurora-sway-2 {
+
+  0%,
+  100% {
+    transform: translate(8%, 4%) rotate(9deg) scaleY(1);
+  }
+
+  50% {
+    transform: translate(-8%, -8%) rotate(15deg) scaleY(1.25);
+  }
+}
+
+@keyframes aurora-sway-3 {
+
+  0%,
+  100% {
+    transform: translate(-6%, 14%) rotate(-5deg) scaleY(1);
+  }
+
+  50% {
+    transform: translate(8%, -6%) rotate(-11deg) scaleY(1.15);
+  }
+}
+
+.aurora-ribbon {
+  position: absolute;
+  left: -30vw;
+  width: 160vw;
+  /* Bandes moins hautes qu'avant (25vh au lieu de 40vh) pour laisser du
+     noir respirer entre chaque rideau, sinon ça fusionne en un seul bloc */
+  height: 22vh;
+  background-size: 200% 100%;
+  mix-blend-mode: screen;
+  /* Opacité ajoutée explicitement en plus du fondu du dégradé — c'est
+     ce qui manquait : sans ça, le blend "screen" sur des couleurs
+     saturées part trop fort en luminosité */
+  opacity: 0.55;
+  filter: blur(35px);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%);
+}
+
+/* Couleurs volontairement limitées à des violets saturés/foncés
+   (neon-violet, asgrin-violet, iris-dark) — on exclut soft-iris et
+   frost de ces dégradés : trop claires, elles partent en blanc écrasé
+   une fois combinées au mix-blend-mode: screen */
+.aurora-ribbon-1 {
+  top: 8%;
+  background: linear-gradient(90deg, transparent 0%, var(--color-neon-violet) 25%, var(--color-iris-dark) 45%, var(--color-asgrin-violet) 65%, transparent 85%);
+  animation: aurora-shimmer 10s linear infinite, aurora-sway-1 22s ease-in-out infinite;
+}
+
+.aurora-ribbon-2 {
+  top: 42%;
+  background: linear-gradient(90deg, transparent 0%, var(--color-asgrin-violet) 25%, var(--color-neon-violet) 50%, var(--color-iris-dark) 70%, transparent 90%);
+  animation: aurora-shimmer 13s linear infinite reverse, aurora-sway-2 27s ease-in-out infinite;
+}
+
+.aurora-ribbon-3 {
+  top: 72%;
+  background: linear-gradient(90deg, transparent 0%, var(--color-iris-dark) 30%, var(--color-neon-violet) 55%, transparent 85%);
+  animation: aurora-shimmer 9s linear infinite, aurora-sway-3 19s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .aurora-ribbon-1,
+  .aurora-ribbon-2,
+  .aurora-ribbon-3 {
+    animation: none;
+  }
+}
+
+@keyframes ray-flicker {
+
+  0%,
+  100% {
+    transform: scaleY(1) skewX(0deg);
+    opacity: 0.85;
+  }
+
+  50% {
+    transform: scaleY(1.12) skewX(-3deg);
+    opacity: 1;
+  }
+}
+
+.animate-ray-flicker {
+  animation-name: ray-flicker;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ray-flicker {
     animation: none;
   }
 }

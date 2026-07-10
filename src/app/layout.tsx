@@ -3,8 +3,7 @@ import { Orbitron, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AuroraBackground from "@/components/AuroraBackground"; // ← nouveau
-
+import NetworkBackground from "@/components/NetworkBackground";
 const orbitron = Orbitron({
   subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
@@ -28,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={`${orbitron.variable} ${dmSans.variable} antialiased`}>
-        <AuroraBackground /> {/* ← une seule fois ici, s'applique à toutes les pages */}
+        <NetworkBackground />
         <Header />
         <main>{children}</main>
         <Footer />
